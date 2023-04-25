@@ -73,6 +73,7 @@
                         <td>${i}</td>
                         <td>${usuario}</td>
                         <td><button class="btn btn-primary" onclick="modificar(this)">Modificar</button></td>
+                        <td><button class="btn btn-danger" onclick="eliminar(this)">Eliminar</button></td>
                     </tr>
                 `;
             });
@@ -96,6 +97,21 @@
             });
         }
 
+        function eliminar(elemento) {
+            const id = elemento.parentNode.parentNode.children[0].innerHTML;
+            usuarios.splice(id, 1);
+            tabla.innerHTML = '';
+            usuarios.forEach((usuario, i) => {
+                tabla.innerHTML += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${usuario}</td>
+                        <td><button class="btn btn-primary" onclick="modificar(this)">Modificar</button></td>
+                        <td><button class="btn btn-danger" onclick="eliminar(this)">Eliminar</button></td>
+                    </tr>
+                `;
+            });
+        }
 
 
     </script>
