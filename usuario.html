@@ -72,10 +72,32 @@
                     <tr>
                         <td>${i}</td>
                         <td>${usuario}</td>
+                        <td><button class="btn btn-primary" onclick="modificar(this)">Modificar</button></td>
                     </tr>
                 `;
             });
         });
+
+        
+        function modificar(elemento) {
+            const id = elemento.parentNode.parentNode.children[0].innerHTML;
+            const nombre = elemento.parentNode.parentNode.children[1].innerHTML;
+            const nuevoNombre = prompt('Nuevo nombre', nombre);
+            usuarios[id] = nuevoNombre;
+            tabla.innerHTML = '';
+            usuarios.forEach((usuario, i) => {
+                tabla.innerHTML += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${usuario}</td>
+                        <td><button class="btn btn-primary" onclick="modificar(this)">Modificar</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+
+
     </script>
 
 </body>
